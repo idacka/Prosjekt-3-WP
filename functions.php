@@ -27,4 +27,19 @@ require_once( get_template_directory() . "/includes/hooks.php" );       // Hooks
 require_once( get_template_directory() . "/includes/meta.php" );        // Custom Post Metas
 require_once( get_template_directory() . "/includes/landing-page.php" );// Landing Page outputs
 
+//Innholdstype for diabetesklinikk1
+function create_post_type() {
+  register_post_type( 'nyheter',
+    array(
+      'labels' => array(
+        'name' => __( 'Nyheter' ),
+        'singular_name' => __( 'Nyheter' )
+      ),
+      'public' => true,
+      'has_archive' => true,
+      'supports' => array('title', 'editor', 'thumbnail')
+    )
+  );
+}
+add_action( 'init', 'create_post_type' );
 ?>
